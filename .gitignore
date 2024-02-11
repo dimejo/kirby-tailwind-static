@@ -5,13 +5,14 @@ Icon
 
 # Kirby & Composer files
 # ----------------------
+/composer.lock
 /kirby/
 /vendor/
 
 # Temporary files
 # ---------------
-/media/*
-!/media/index.html
+/media/
+/static/
 
 # Lock files
 # ---------------
