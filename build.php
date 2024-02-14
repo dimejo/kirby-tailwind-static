@@ -7,4 +7,4 @@ $kirby = kirby();
 $site = $kirby->site();
 
 $staticSiteGenerator = new D4L\StaticSiteGenerator($kirby, $pathsToCopy = null, $pages = null);
-$fileList = $staticSiteGenerator->generate($outputFolder = './static', $baseUrl = '/static', $preserve = []);
+$fileList = $staticSiteGenerator->generate($outputFolder = './static', $baseUrl = '/kirby-tailwind-static', $preserve = []);
