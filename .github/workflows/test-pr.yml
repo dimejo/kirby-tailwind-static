@@ -1,0 +1,43 @@
+# Simple workflow to test building the static content for GitHub Pages
+# https://github.com/actions/starter-workflows/blob/main/pages/static.yml
+name: Test PR
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+
+      # Required PHP extensions for Kirby are already installed on
+      # ubuntu-latest (currently Ubuntu 22.04) but additional extensions can
+      # be installed if necessary.
+      # https://github.com/marketplace/actions/setup-php-action#heavy_plus_sign-php-extension-support
+      # https://getkirby.com/docs/reference/system/requirements#php-extensions
+      # https://github.com/shivammathur/setup-php/wiki/Php-extensions-loaded-on-ubuntu-22.04#php-82
+      - name: Setup PHP 8.2 with PECL extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+
+      # '--ignore-platform-reqs' is necessary to supress composer complaining
+      # about a missing 'ext-gd' dependancy. See:
+      # https://github.com/composer/docker/issues/239
+      - name: Install Kirby and dependencies via Composer
+        uses: php-actions/composer@v6
+        with:
+          args: "--ignore-platform-reqs"
+          php_version: "8.2"
+
+      - name: Build the static website
+        run: php ./build.php
