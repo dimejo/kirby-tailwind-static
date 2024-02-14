@@ -5,7 +5,6 @@ Icon
 
 # Kirby & Composer files
 # ----------------------
-/composer.lock
 /kirby/
 /vendor/
 
