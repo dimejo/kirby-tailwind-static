@@ -3,6 +3,7 @@
 name: Test PR
 
 on:
+  # Runs when a PR is opened or commits are added to the PR
   pull_request:
     branches: ["main"]
 
