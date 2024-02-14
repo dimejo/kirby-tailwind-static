@@ -5,10 +5,20 @@
 
 version: 2
 updates:
+  # Update dependencies listed in .github/workflows/*.yml
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      # Prefix all commit messages with "[actions] " (no colon, but a trailing whitespace)
+      prefix: "[actions] "
+
   - package-ecosystem: "composer"
     directory: "/" # Location of package manifests
     schedule:
-      interval: "daily"
+      day: "tuesday"
+      interval: "weekly"
     commit-message:
       # Prefix all commit messages with "[composer] " (no colon, but a trailing whitespace)
-      prefix: '[composer] '
+      prefix: "[composer] "
