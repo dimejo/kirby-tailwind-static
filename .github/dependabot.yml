@@ -5,7 +5,7 @@
 
 version: 2
 updates:
-  # Update dependencies listed in .github/workflows/*.yml
+  # Update actions listed in .github/workflows/*.yml
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -22,3 +22,18 @@ updates:
     commit-message:
       # Prefix all commit messages with "[composer] " (no colon, but a trailing whitespace)
       prefix: "[composer] "
+
+  # Update npm and pnpm packages
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      day: "tuesday"
+      interval: "weekly"
+    commit-message:
+      # Prefix all commit messages with "[npm] " (no colon, but a trailing whitespace)
+      prefix: "[npm] "
+    # Use `ignore` to specify dependencies that should not be updated
+    # https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#ignore
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
