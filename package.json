@@ -1,0 +1,26 @@
+{
+  "name": "kirby-tailwind-static",
+  "version": "1.0.0",
+  "description": "Starting point for static websites with Kirby CMS and Tailwind CSS",
+  "keywords": [
+    "kirby",
+    "tailwindcss"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dimejo/kirby-tailwind-static.git"
+  },
+  "scripts": {
+    "build": "run-s build:tailwind build:kirby",
+    "build:kirby": "cross-env KIRBY_ENV=prod php build.php",
+    "build:tailwind": "npx tailwindcss --input ./assets/css/tailwind.base.css --output ./assets/css/styles.css --minify",
+    "dev": "run-p dev:*",
+    "dev:kirby": "cross-env KIRBY_ENV=dev php -S localhost:8000 kirby/router.php",
+    "dev:tailwind": "npx tailwindcss --input ./assets/css/tailwind.base.css --output ./assets/css/styles.css --watch"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "npm-run-all": "^4.1.5",
+    "tailwindcss": "^3.4.1"
+  }
+}

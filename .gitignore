@@ -3,6 +3,10 @@
 Icon
 .DS_Store
 
+# NPM files
+# ----------------------
+/node_modules/
+
 # Kirby & Composer files
 # ----------------------
 /kirby/
@@ -10,6 +14,7 @@ Icon
 
 # Temporary files
 # ---------------
+/assets/css/styles.css
 /media/
 /static/
 
