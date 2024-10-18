@@ -9,7 +9,8 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "monthly"
+      day: "wednesday"
+      interval: "weekly"
     commit-message:
       # Prefix all commit messages with "[actions] " (no colon, but a trailing whitespace)
       prefix: "[actions] "
@@ -17,7 +18,7 @@ updates:
   - package-ecosystem: "composer"
     directory: "/" # Location of package manifests
     schedule:
-      day: "tuesday"
+      day: "wednesday"
       interval: "weekly"
     commit-message:
       # Prefix all commit messages with "[composer] " (no colon, but a trailing whitespace)
@@ -27,7 +28,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      day: "tuesday"
+      day: "wednesday"
       interval: "weekly"
     commit-message:
       # Prefix all commit messages with "[npm] " (no colon, but a trailing whitespace)
